@@ -3,21 +3,24 @@
     "pk":1,
     "fields":{
       "name":"Tokyo",
-      "visited":"False"
+      "visited":"False",
+      "notes":""
     }
   },
   { "model":"travel_wishlist.place",
     "pk":2,
     "fields":{
       "name":"New York",
-      "visited":"False"
+      "visited":"False",
+      "notes":""
     }
   },
   { "model":"travel_wishlist.place",
     "pk":3,
     "fields":{
       "name":"San Francisco",
-      "visited":"True"
+      "visited":"True",
+      "notes":""
     }
   },
 
@@ -25,7 +28,8 @@
     "pk":4,
     "fields":{
       "name":"Moab",
-      "visited":"True"
+      "visited":"True",
+      "notes":""
     }
   }
 ]
