@@ -1,0 +1,40 @@
+{% extends 'travel_wishlist/base.html' %}
+
+<html>
+    <head>
+        <title>Travel Wishlist</title>
+    </head>
+    <body>
+        <div class = "page-header">
+            <h1><a href="/">Travel Wishlist</a></h1>
+        </div>
+
+        <div class="content container">
+          <div class="row">
+            <div class="col-md-8">
+              {% block content %}
+
+                <div class="place">
+                  <h1><a href="{% url 'place_detail' pk=place.pk %}">{{ place.name }}</a></h1>
+                  {% if place.visited %}
+                    <div class="visited">
+                      <p>visited: Visited </p>
+                    </div>
+                    <div class="date">
+                      <p>date: {{ place.date }}</p>
+                    </div>
+                    <div class="notes">
+                      <p>notes: {{ place.notes|linebreaksbr  }}</p>
+                    </div>
+                  {% else %}
+                    return redirect()
+                  {% endif %}
+
+                </div>
+
+              {% endblock content %}
+            </div>
+          </div>
+        </div>
+    </body>
+</html>

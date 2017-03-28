@@ -19,6 +19,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
                 ('visited', models.BooleanField(default=False)),
+                ('dateVisited', models.DateTimeField(blank=True, null=True)),
+                ('notes', models.CharField(max_length=1000))
             ],
         ),
     ]

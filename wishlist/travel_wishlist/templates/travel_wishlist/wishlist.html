@@ -1,24 +1,39 @@
 {% extends 'travel_wishlist/base.html' %}
+
+
 {% block content %}
+  <html>
+      <head>
+          <title>Travel Wishlist</title>
+      </head>
+      <body>
+          <div class = "page-header">
+              <h2>Travel Wishlist</h2>
 
-<h2>Travel Wishlist</h2>
+              <form method = "POST" action= "{% url 'place_list' %}">
+              {% csrf_token %}
+              {{ form }}
+              <button type="submit">Add</button>
+              </form>
+          </div>
 
-<form method = "POST" action= "{% url 'place_list' %}">
-{% csrf_token %}
-{{ form }}
-<button type="submit">Add</button>
-</form>
 
-{% for place in places %}
-<div>
-  <p>{{place.name}}</p>
-  <form method = "POST" action = "{% url 'place_is_visited' %}">
-    {% csrf_token %}
-    <input type = "hidden" name = "pk" value = "{{ place.pk }}">
-    <button type = "submit">Visited!</button>
-</div>
-{% empty %}
-<P> You have no places in your wishlist</p>
-{% endfor %}
-<a href = "{%url 'places_visited' %}">Places you've visited</a>
-{% endblock %}
+
+
+          <div class="place">
+          {% for place in places %}
+          {% if place.visited %}
+            <h1><a href="{% url 'place_detail' pk=place.pk %}">{{ place.name }}</a></h1>
+            <p>Visited </p>
+          {% else %}
+            <h1><a href="{% url 'place_edit' pk=place.pk %}">{{ place.name }}</a></h1>
+          {% endif %}
+          {% empty %}
+          <p> You have not added any places to your wish list yet</p>
+          {% endfor %}
+          </div>
+
+
+      </body>
+  </html>
+{% endblock content %}
